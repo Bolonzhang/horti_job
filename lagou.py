@@ -84,5 +84,5 @@ for a in range(num):
     time.sleep(1)
 print('**结束**')
 print('=========================================================')
-print('一共爬取',Cal,'条招聘信息')
+print('一共爬取',Cal-1,'条招聘信息')
 driver.close()
