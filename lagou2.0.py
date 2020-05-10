@@ -20,7 +20,7 @@ class lgSpider(object):
     def pre_csv(self):
         with open('lagou_jobs.csv','w',encoding='utf-8') as file:
             writer=csv.writer(file)
-            header=['公司','职位','工资','位置','经验要求','学历要求','职位诱惑','职位描述']
+            header=['公司','规模','职位','工资','位置','经验要求','学历要求','职位诱惑','职位描述']
             writer.writerow(header)
     #提取页面信息
     def parse_page(self):
@@ -32,6 +32,7 @@ class lgSpider(object):
             self.browser.switch_to.window(self.browser.window_handles[-1])
             #开始到网页内提取文字内容了
             a=self.browser.find_element_by_xpath('/html/body/div[6]/div/div[1]/div/h4').text[:-2]
+            i=self.browser.find_element_by_xpath('//*[@id="job_company"]/dd/ul/li[3]/h4').text
             b=self.browser.find_element_by_xpath('/html/body/div[6]/div/div[1]/div/h1').text
             c=self.browser.find_element_by_xpath('/html/body/div[6]/div/div[1]/dd/h3/span[1]').text
             d=self.browser.find_element_by_xpath('/html/body/div[6]/div/div[1]/dd/h3/span[2]').text[1:3]
@@ -39,7 +40,7 @@ class lgSpider(object):
             f=self.browser.find_element_by_xpath('/html/body/div[6]/div/div[1]/dd/h3/span[4]').text[:-2]
             g=self.browser.find_element_by_xpath('//*[@id="job_detail"]/dd[1]').text[5:]
             h=self.browser.find_element_by_xpath('//*[@id="job_detail"]/dd[2]').text[5:]
-            job_disc=[a,b,c,d,e,f,g,h]
+            job_disc=[a,i,b,c,d,e,f,g,h]
             with open('lagou_jobs.csv', 'a', encoding='utf-8') as file:
                 writer = csv.writer(file)
                 writer.writerow(job_disc)
