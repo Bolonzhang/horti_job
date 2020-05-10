@@ -27,8 +27,6 @@ class lgSpider(object):
         self.lists = self.browser.find_elements_by_xpath('//*[@id="s_position_list"]/ul/li/div[1]/div[1]/div[1]/a/h3')
         self.num = len(self.lists)
         for list in self.lists:
-            self.Cal+=1
-            print('已爬取',self.Cal,'条招聘信息')
             self.browser.execute_script('arguments[0].click();',list)
             time.sleep(1)
             self.browser.switch_to.window(self.browser.window_handles[-1])
@@ -45,6 +43,8 @@ class lgSpider(object):
             with open('lagou_jobs.csv', 'a', encoding='utf-8') as file:
                 writer = csv.writer(file)
                 writer.writerow(job_disc)
+            self.Cal += 1
+            print('已爬取', self.Cal, '条招聘信息')
             self.browser.close()
             self.browser.switch_to.window(self.browser.window_handles[0])
             time.sleep(1)
