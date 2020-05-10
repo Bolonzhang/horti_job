@@ -18,7 +18,7 @@ class lgSpider(object):
         time.sleep(1)
     #准备csv文件，写入标题栏
     def pre_csv(self):
-        with open('lagou_jobs.csv','a',encoding='utf-8') as file:
+        with open('lagou_jobs.csv','w',encoding='utf-8') as file:
             writer=csv.writer(file)
             header=['公司','职位','工资','位置','经验要求','学历要求','职位诱惑','职位描述']
             writer.writerow(header)
@@ -33,7 +33,7 @@ class lgSpider(object):
             time.sleep(1)
             self.browser.switch_to.window(self.browser.window_handles[-1])
             #开始到网页内提取文字内容了
-            a=self.browser.find_element_by_xpath('/html/body/div[6]/div/div[1]/div/h4').text
+            a=self.browser.find_element_by_xpath('/html/body/div[6]/div/div[1]/div/h4').text[:-2]
             b=self.browser.find_element_by_xpath('/html/body/div[6]/div/div[1]/div/h1').text
             c=self.browser.find_element_by_xpath('/html/body/div[6]/div/div[1]/dd/h3/span[1]').text
             d=self.browser.find_element_by_xpath('/html/body/div[6]/div/div[1]/dd/h3/span[2]').text[1:3]
@@ -42,8 +42,8 @@ class lgSpider(object):
             g=self.browser.find_element_by_xpath('//*[@id="job_detail"]/dd[1]').text[5:]
             h=self.browser.find_element_by_xpath('//*[@id="job_detail"]/dd[2]').text[5:]
             job_disc=[a,b,c,d,e,f,g,h]
-            with open('lagou_jobs.csv', 'a', encoding='utf-8') as f:
-                writer = csv.writer(f)
+            with open('lagou_jobs.csv', 'a', encoding='utf-8') as file:
+                writer = csv.writer(file)
                 writer.writerow(job_disc)
             self.browser.close()
             self.browser.switch_to.window(self.browser.window_handles[0])
