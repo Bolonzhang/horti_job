@@ -1,2 +1,2 @@
 # horti_job
-用Python爬取园艺类工作的招聘数据
+用Python的Selenium框架爬取园艺类工作的招聘数据
