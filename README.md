@@ -19,4 +19,4 @@ Boss直聘与智联招聘因为有反扒虫机制，我决定放弃用Python。�
 
 2020.5.10——拉勾网✅（[代码](https://github.com/Bolonzhang/horti_job/blob/master/lagou2.0.py)、[数据](https://github.com/Bolonzhang/horti_job/blob/master/lagou_jobs.csv)）
 
-2020.5.11——Boss直聘✅
+2020.5.11——Boss直聘✅([数据](https://github.com/Bolonzhang/horti_job/blob/master/boss_jobs.csv))
